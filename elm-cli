@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# removes colour
+# sed $'s/\x1b\\[[0-9;]*m//g'
+
+# removes any indentations
+# sed $'s/> //g'
+
+# removes printed type
+# sed $'s/ \: .*//g'
+
+cat $1 | elm repl | sed $'s/\x1b\\[[0-9;]*m//g' | tail -n 2 | head -n 1 | sed $'s/> //g' | sed $'s/ \: .*//g'
